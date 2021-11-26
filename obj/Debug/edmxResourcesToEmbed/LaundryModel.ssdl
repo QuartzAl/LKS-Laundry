@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phonenumber" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetailDeposit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdDeposit" Type="int" Nullable="false" />
+    <Property Name="IdService" Type="int" Nullable="false" />
+    <Property Name="IdPrepaidPackage" Type="int" />
+    <Property Name="PriceUnit" Type="int" Nullable="false" />
+    <Property Name="TotalUnit" Type="float" Nullable="false" />
+    <Property Name="CompletedDatetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DateOfBirth" Type="date" Nullable="false" />
+    <Property Name="IdJob" Type="int" Nullable="false" />
+    <Property Name="Salary" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HeaderDeposit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Idcustomer" Type="int" Nullable="false" />
+    <Property Name="Idemployee" Type="int" Nullable="false" />
+    <Property Name="TransactionDatetime" Type="datetime" Nullable="false" />
+    <Property Name="CompleteEstimationDatetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.MSreplication_options' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdService" Type="int" Nullable="false" />
+    <Property Name="Totalunit" Type="int" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrepaidPackage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCustomer" Type="int" Nullable="false" />
+    <Property Name="IdPackage" Type="int" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+    <Property Name="StartDatetime" Type="datetime" Nullable="false" />
+    <Property Name="CompletedDatetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdCategory" Type="int" Nullable="false" />
+    <Property Name="IdUnit" Type="int" Nullable="false" />
+    <Property Name="PriceUnit" Type="int" Nullable="false" />
+    <Property Name="EstimationDuration" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_fallback_db' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_fallback_dev' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_fallback_usg' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__DetailDep__IdDep__2B5F6B28">
+    <End Role="HeaderDeposit" Type="Self.HeaderDeposit" Multiplicity="1" />
+    <End Role="DetailDeposit" Type="Self.DetailDeposit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HeaderDeposit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailDeposit">
+        <PropertyRef Name="IdDeposit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetailDep__IdPre__2D47B39A">
+    <End Role="PrepaidPackage" Type="Self.PrepaidPackage" Multiplicity="0..1" />
+    <End Role="DetailDeposit" Type="Self.DetailDeposit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrepaidPackage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailDeposit">
+        <PropertyRef Name="IdPrepaidPackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetailDep__IdSer__2C538F61">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="DetailDeposit" Type="Self.DetailDeposit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetailDeposit">
+        <PropertyRef Name="IdService" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__IdJob__1A34DF26">
+    <End Role="Job" Type="Self.Job" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="IdJob" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderDep__Idcus__1D114BD1">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="HeaderDeposit" Type="Self.HeaderDeposit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderDeposit">
+        <PropertyRef Name="Idcustomer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HeaderDep__Idemp__1E05700A">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="HeaderDeposit" Type="Self.HeaderDeposit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeaderDeposit">
+        <PropertyRef Name="Idemployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Package__IdServi__24B26D99">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="Package" Type="Self.Package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Package">
+        <PropertyRef Name="IdService" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PrepaidPa__IdCus__278EDA44">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="PrepaidPackage" Type="Self.PrepaidPackage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrepaidPackage">
+        <PropertyRef Name="IdCustomer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PrepaidPa__IdPac__2882FE7D">
+    <End Role="Package" Type="Self.Package" Multiplicity="1" />
+    <End Role="PrepaidPackage" Type="Self.PrepaidPackage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Package">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrepaidPackage">
+        <PropertyRef Name="IdPackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Service__IdCateg__20E1DCB5">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="IdCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Service__IdUnit__21D600EE">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="IdUnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="masterModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetailDeposit" EntityType="Self.DetailDeposit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HeaderDeposit" EntityType="Self.HeaderDeposit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrepaidPackage" EntityType="Self.PrepaidPackage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__DetailDep__IdDep__2B5F6B28" Association="Self.FK__DetailDep__IdDep__2B5F6B28">
+      <End Role="HeaderDeposit" EntitySet="HeaderDeposit" />
+      <End Role="DetailDeposit" EntitySet="DetailDeposit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetailDep__IdPre__2D47B39A" Association="Self.FK__DetailDep__IdPre__2D47B39A">
+      <End Role="PrepaidPackage" EntitySet="PrepaidPackage" />
+      <End Role="DetailDeposit" EntitySet="DetailDeposit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetailDep__IdSer__2C538F61" Association="Self.FK__DetailDep__IdSer__2C538F61">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="DetailDeposit" EntitySet="DetailDeposit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__IdJob__1A34DF26" Association="Self.FK__Employee__IdJob__1A34DF26">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderDep__Idcus__1D114BD1" Association="Self.FK__HeaderDep__Idcus__1D114BD1">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="HeaderDeposit" EntitySet="HeaderDeposit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HeaderDep__Idemp__1E05700A" Association="Self.FK__HeaderDep__Idemp__1E05700A">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="HeaderDeposit" EntitySet="HeaderDeposit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Package__IdServi__24B26D99" Association="Self.FK__Package__IdServi__24B26D99">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Package" EntitySet="Package" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PrepaidPa__IdCus__278EDA44" Association="Self.FK__PrepaidPa__IdCus__278EDA44">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="PrepaidPackage" EntitySet="PrepaidPackage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PrepaidPa__IdPac__2882FE7D" Association="Self.FK__PrepaidPa__IdPac__2882FE7D">
+      <End Role="Package" EntitySet="Package" />
+      <End Role="PrepaidPackage" EntitySet="PrepaidPackage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Service__IdCateg__20E1DCB5" Association="Self.FK__Service__IdCateg__20E1DCB5">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Service__IdUnit__21D600EE" Association="Self.FK__Service__IdUnit__21D600EE">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

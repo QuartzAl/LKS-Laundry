@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ProgrammingClass">
+  <DataContextMoniker Name="/ProgrammingClassDataContext" />
+  <nestedChildShapes>
+    <classShape Id="0022d364-196c-4384-b21b-beefabc6948a" absoluteBounds="1.875, 1.625, 2, 2.5401025390625">
+      <DataClassMoniker Name="/ProgrammingClassDataContext/Employee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d5a60689-5ba6-4a34-9602-735435b0ff47" absoluteBounds="1.8900000000000001, 2.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a5212b3e-3be4-497e-856b-7ce50fe47c1c" absoluteBounds="4.25, 2.125, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/ProgrammingClassDataContext/Job" />
+      <nestedChildShapes>
+        <elementListCompartment Id="663951cb-847f-45d5-aba6-7b34db1ef907" absoluteBounds="4.265, 2.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.25 : 2.72199625651042); (3.875 : 2.72199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ProgrammingClassDataContext/Job/Job_Employee" />
+      <nodes>
+        <classShapeMoniker Id="a5212b3e-3be4-497e-856b-7ce50fe47c1c" />
+        <classShapeMoniker Id="0022d364-196c-4384-b21b-beefabc6948a" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

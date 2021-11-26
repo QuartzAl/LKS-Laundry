@@ -1,0 +1,31 @@
+﻿<Window x:Class="LKS_Laundry.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LKS_Laundry"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" FontSize="30" Margin="0,30,0,0">Esemka Laundry</Label>
+        <Label Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Username:</Label>
+        <Label Grid.Row="2" Grid.Column="0" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Password:</Label>
+
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" x:Name="txtUsername" VerticalAlignment="Center" Margin="0,0,60,0"/>
+        <PasswordBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" x:Name="txtPassword" VerticalAlignment="Center" Margin="0,0,60,0"/>
+
+        <Button Click="Login_click" Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Padding="15,5">Login</Button>
+    </Grid>
+</Window>
